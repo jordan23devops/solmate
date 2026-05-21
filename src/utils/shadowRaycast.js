@@ -2,12 +2,12 @@ import { isSceneReadyForRaycast } from '../cesium/sceneReady'
 import { sunDirectionECEF } from './sunDirection'
 
 const PICKER_EXCLUDE_IDS = [
-  'sunspot-pin',
-  'sunspot-pin-glow',
-  'sunspot-ground',
-  'sunspot-height-line',
-  'sunspot-sun-ray',
-  'sunspot-sun-dot',
+  'solmate-pin',
+  'solmate-pin-glow',
+  'solmate-ground',
+  'solmate-height-line',
+  'solmate-sun-ray',
+  'solmate-sun-dot',
 ]
 
 /**
@@ -73,7 +73,7 @@ export function computeSunExposure(
     }
 
     if (typeof scene.pickFromRay !== 'function') {
-      console.warn('[SunSpot] scene.pickFromRay is not available')
+      console.warn('[Solmate] scene.pickFromRay is not available')
       return { inSun: true, direction }
     }
 
@@ -82,12 +82,12 @@ export function computeSunExposure(
     // stays in the pickable set so building hits are reported.
     const exclude = getRaycastExcludes(viewer)
     const result = scene.pickFromRay(ray, exclude)
-    console.log('[SunSpot] raycast result:', result)
+    console.log('[Solmate] raycast result:', result)
 
     const inSun = !result?.position
     return { inSun, direction }
   } catch (error) {
-    console.warn('[SunSpot] computeSunExposure failed:', error)
+    console.warn('[Solmate] computeSunExposure failed:', error)
     return { inSun: false, direction: null }
   }
 }

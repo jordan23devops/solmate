@@ -67,7 +67,7 @@ function waitForGlobeTilesZero(viewer, isCancelled) {
         finish(() => reject(new Error('cancelled')))
         return
       }
-      console.warn('[SunSpot] Globe tile wait timed out; continuing.')
+      console.warn('[Solmate] Globe tile wait timed out; continuing.')
       finish(resolve)
     }, TILE_LOAD_TIMEOUT_MS)
   })

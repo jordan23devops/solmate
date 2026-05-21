@@ -61,8 +61,8 @@ class MapErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
-    console.error('[SunSpot] Map subtree error:', error)
-    console.error('[SunSpot] Component stack:', info.componentStack)
+    console.error('[Solmate] Map subtree error:', error)
+    console.error('[Solmate] Component stack:', info.componentStack)
   }
 
   render() {
@@ -226,7 +226,7 @@ function App() {
       })
       .catch((err) => {
         if (err?.name === 'AbortError') return
-        console.warn('[SunSpot] Places fetch failed:', err)
+        console.warn('[Solmate] Places fetch failed:', err)
         setPlacesError(err?.message ?? 'Failed to load places.')
         setRawPlaces([])
       })
@@ -406,7 +406,7 @@ function App() {
       setSunInfo(buildSunInfo(lat, lng, dateAtMinutes(minutes)))
       setMapError(null)
     } catch (error) {
-      console.error('[SunSpot] Sun calculation failed:', error)
+      console.error('[Solmate] Sun calculation failed:', error)
       setMapError(error.message)
     }
   }, [])
@@ -452,7 +452,7 @@ function App() {
     <ErrorBoundary>
       <div className="app">
         <header className="app-header">
-          <h1>SunSpot</h1>
+          <h1>Solmate</h1>
           <p>Solar exposure mapping — click the map to pick a spot</p>
         </header>
 

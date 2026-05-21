@@ -1,7 +1,7 @@
 const SHADOW_COLOR = '#1a237e'
 const SHADOW_ALPHA = 0.35
 const SHADOW_PIXEL_SIZE = 12
-const GRID_ENTITY_PREFIX = 'sunspot-grid-'
+const GRID_ENTITY_PREFIX = 'solmate-grid-'
 const MAX_OVERLAY_ENTITIES = 25
 
 export function clearShadowOverlay(viewer) {
@@ -28,7 +28,7 @@ export function renderShadowOverlay(viewer, cache, timeKey, heightMeters) {
   if (!Array.isArray(cache.points)) return 0
   if (cache.points.length > MAX_OVERLAY_ENTITIES) {
     console.warn(
-      `[SunSpot] renderShadowOverlay: ${cache.points.length} points exceeds cap, truncating to ${MAX_OVERLAY_ENTITIES}`,
+      `[Solmate] renderShadowOverlay: ${cache.points.length} points exceeds cap, truncating to ${MAX_OVERLAY_ENTITIES}`,
     )
   }
 
@@ -63,7 +63,7 @@ export function renderShadowOverlay(viewer, cache, timeKey, heightMeters) {
       })
       shadowCount++
     } catch (error) {
-      console.warn('[SunSpot] Failed to add shadow entity', index, error)
+      console.warn('[Solmate] Failed to add shadow entity', index, error)
     }
   })
 

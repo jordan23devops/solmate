@@ -8,7 +8,7 @@ export function initCesiumIon() {
   const token = import.meta.env.VITE_CESIUM_TOKEN
   if (!token) {
     console.warn(
-      '[SunSpot] VITE_CESIUM_TOKEN is not set. Copy .env.example to .env and add your Cesium ion token.',
+      '[Solmate] VITE_CESIUM_TOKEN is not set. Copy .env.example to .env and add your Cesium ion token.',
     )
     return false
   }

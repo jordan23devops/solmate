@@ -37,7 +37,7 @@ const SUN_RAY_COLOR_CSS = '#FFEB3B'
 const RAY_ALPHA_SUN = 0.85
 const RAY_ALPHA_SHADOW = 0.45
 
-const PLACE_MARKER_PREFIX = 'sunspot-place-'
+const PLACE_MARKER_PREFIX = 'solmate-place-'
 
 const PLACE_MARKER_DEFAULT_SIZE = 28
 const PLACE_MARKER_SELECTED_SIZE = 40
@@ -115,7 +115,7 @@ function buildDefaultCartesian(viewer, lat, lng) {
 }
 
 /**
- * Build all SunSpot marker entities using CallbackProperty so every visual
+ * Build all Solmate marker entities using CallbackProperty so every visual
  * tracks the same animRef state in real time (the single source of truth).
  */
 function createMarkerEntities(viewer, animRef) {
@@ -140,7 +140,7 @@ function createMarkerEntities(viewer, animRef) {
   }
 
   viewer.entities.add({
-    id: 'sunspot-ground',
+    id: 'solmate-ground',
     position: new Cesium.CallbackProperty(
       () => animRef.current.groundCartesian ?? undefined,
       false,
@@ -155,7 +155,7 @@ function createMarkerEntities(viewer, animRef) {
   })
 
   viewer.entities.add({
-    id: 'sunspot-height-line',
+    id: 'solmate-height-line',
     polyline: {
       positions: new Cesium.CallbackProperty(() => {
         const a = animRef.current
@@ -169,7 +169,7 @@ function createMarkerEntities(viewer, animRef) {
   })
 
   viewer.entities.add({
-    id: 'sunspot-pin-glow',
+    id: 'solmate-pin-glow',
     position: new Cesium.CallbackProperty(animatedTop, false),
     point: {
       pixelSize: new Cesium.CallbackProperty(() => {
@@ -183,7 +183,7 @@ function createMarkerEntities(viewer, animRef) {
   })
 
   viewer.entities.add({
-    id: 'sunspot-pin',
+    id: 'solmate-pin',
     position: new Cesium.CallbackProperty(animatedTop, false),
     billboard: {
       image: PIN_ORANGE,
@@ -195,7 +195,7 @@ function createMarkerEntities(viewer, animRef) {
   })
 
   viewer.entities.add({
-    id: 'sunspot-sun-ray',
+    id: 'solmate-sun-ray',
     polyline: {
       positions: new Cesium.CallbackProperty(() => {
         const a = animRef.current
@@ -216,7 +216,7 @@ function createMarkerEntities(viewer, animRef) {
   })
 
   viewer.entities.add({
-    id: 'sunspot-sun-dot',
+    id: 'solmate-sun-dot',
     position: new Cesium.CallbackProperty(sunRayEnd, false),
     point: {
       pixelSize: 18,
@@ -524,7 +524,7 @@ export default function Map({
         }
       } catch (error) {
         const message = error?.message ?? 'Failed to initialize Cesium viewer.'
-        console.error('[SunSpot] Cesium initialization failed:', error)
+        console.error('[Solmate] Cesium initialization failed:', error)
         if (!cancelled) {
           setInitError(message)
           onMapErrorRef.current?.(
@@ -625,7 +625,7 @@ export default function Map({
         animRef.current.sunDirection = direction
         animRef.current.inSun = inSun
 
-        const pin = viewer.entities.getById('sunspot-pin')
+        const pin = viewer.entities.getById('solmate-pin')
         if (pin) pin.billboard.image = inSun ? PIN_YELLOW : PIN_ORANGE
 
         onShadowUpdateRef.current?.(inSun)
@@ -637,7 +637,7 @@ export default function Map({
       } catch (error) {
         if (gen !== computeGenRef.current) return
         if (error?.message === 'cancelled') return
-        console.error('[SunSpot] Sun status update failed:', error)
+        console.error('[Solmate] Sun status update failed:', error)
         onMapErrorRef.current?.(
           error instanceof Error ? error : new Error(String(error)),
         )

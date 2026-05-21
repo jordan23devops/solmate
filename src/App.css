@@ -521,10 +521,10 @@
   background: #ffd54f;
   border-radius: 6px;
   text-align: center;
-  animation: sunspot-final-pop 0.45s ease-out;
+  animation: solmate-final-pop 0.45s ease-out;
 }
 
-@keyframes sunspot-final-pop {
+@keyframes solmate-final-pop {
   from {
     opacity: 0;
     transform: translateY(4px) scale(0.96);

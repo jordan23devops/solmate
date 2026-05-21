@@ -32,7 +32,7 @@ export function sunDirectionECEF(lng, lat, altitudeDeg, azimuthDeg, ellipsoid) {
 
     return Cesium.Cartesian3.normalize(world, world)
   } catch (error) {
-    console.warn('[SunSpot] sunDirectionECEF failed:', error)
+    console.warn('[Solmate] sunDirectionECEF failed:', error)
     return null
   }
 }
@@ -49,7 +49,7 @@ export function pointFromDegrees(lng, lat, heightMeters, ellipsoid) {
       ellipsoidToUse,
     )
   } catch (error) {
-    console.warn('[SunSpot] pointFromDegrees failed:', error)
+    console.warn('[Solmate] pointFromDegrees failed:', error)
     return null
   }
 }
@@ -64,7 +64,7 @@ export function offsetAlongDirection(origin, direction, distanceMeters) {
     )
     return Cesium.Cartesian3.add(origin, scaled, new Cesium.Cartesian3())
   } catch (error) {
-    console.warn('[SunSpot] offsetAlongDirection failed:', error)
+    console.warn('[Solmate] offsetAlongDirection failed:', error)
     return null
   }
 }

@@ -57,7 +57,7 @@ export default function SearchBar({
         })
         .catch((err) => {
           if (err?.name === 'AbortError') return
-          console.warn('[SunSpot] Search failed:', err)
+          console.warn('[Solmate] Search failed:', err)
           setLocalError(err?.message ?? 'Search failed')
           setSuggestions([])
         })
